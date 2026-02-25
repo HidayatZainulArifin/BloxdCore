@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>BloxdCore - Scripts</title>
+<meta charset="UTF-8">
+
+<style>
+body{
+    font-family: Arial;
+    background: #0f172a;
+    color: white;
+    margin: 0;
+    padding: 20px;
+}
+
+h1{
+    text-align:center;
+    color:#00c3ff;
+}
+
+.card{
+    background:#1e293b;
+    padding:20px;
+    margin:20px 0;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,195,255,0.3);
+}
+
+code{
+    display:block;
+    background:black;
+    padding:10px;
+    margin-top:10px;
+    border-radius:5px;
+    color:#00ffcc;
+    white-space:pre-wrap;
+}
+
+a{
+    color:#00c3ff;
+    text-decoration:none;
+}
+a:hover{
+    color:white;
+}
+button{
+    padding:8px 15px;
+    background:#00c3ff;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+button:hover{
+    background:white;
+}
+</style>
+
+</head>
+<body>
+
+<h1>BloxdCore Scripts Documentation</h1>
+
+<div class="card">
+<h2>Basic HTML Structure</h2>
+<p>Contoh struktur dasar halaman web:</p>
+<code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;My Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+Hello World
+&lt;/body&gt;
+&lt;/html&gt;
+</code>
+</div>
+
+<div class="card">
+<h2>JavaScript Button Example</h2>
+<p>Tombol interaktif:</p>
+<code>
+&lt;button onclick="showMessage()"&gt;Klik Saya&lt;/button&gt;
+
+&lt;script&gt;
+function showMessage(){
+    alert("Welcome to BloxdCore!");
+}
+&lt;/script&gt;
+</code>
+</div>
+
+<div class="card">
+<h2>Hover Effect Example</h2>
+<code>
+&lt;style&gt;
+.hover-text {
+  color:white;
+  transition:0.3s;
+}
+.hover-text:hover {
+  color:#00c3ff;
+}
+&lt;/style&gt;
+
+&lt;p class="hover-text"&gt;Arahkan mouse ke saya&lt;/p&gt;
+</code>
+</div>
+
+<div class="card">
+<h2>Copy Text Button</h2>
+<code>
+&lt;button onclick="copyText()"&gt;Copy&lt;/button&gt;
+
+&lt;script&gt;
+function copyText(){
+ navigator.clipboard.writeText("BloxdCore Developer Mode");
+ alert("Text Copied!");
+}
+&lt;/script&gt;
+</code>
+</div>
+
+<div style="text-align:center;">
+<a href="index.html">⬅ Back to Home</a>
+</div>
+
+</body>
+</html>
