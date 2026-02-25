@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <title>BloxdCore - Bloxd.io Documentation</title>
@@ -34,6 +34,8 @@ code{
     border-radius:6px;
     color:#00ffcc;
     white-space:pre-wrap;
+    max-height:600px;
+    overflow-x:auto;
 }
 
 a{
@@ -84,100 +86,60 @@ button:hover{
 <p>Gunakan sebagai referensi pembelajaran system design & logic building.</p>
 </div>
 
-
+<!-- Info Block Names -->
 <div class="card">
-<h2>Event System Example (Concept)</h2>
+<h2>Daftar Nama Block di Bloxd (Block Names)</h2>
+<p>Berikut adalah daftar Block Names beserta varian meta-nya:</p>
 
 <code>
-onPlayerJoin(player){
-    broadcast(player.name + " joined the server");
-    giveStarterItems(player);
-}
+# Block Names (1006 blocks)
+# Gunakan ROOT block persis seperti ini (tanpa suffix)
+# Beberapa block memiliki varian meta, ditandai dalam tanda kurung []
+# R = rotation, O = open/closed, H = halfblockPlacement, G = growing
+# TB = treeBase, TC = treeCanopy, B = books, FG = freshlyGrown, RT = roots
+# LV = lava, TP = top, GR = grassRoots, BK = breaking, FL = flashing
+
+Dirt [GR]
+Messy Dirt
+Grass Block
+Sand
+Clay
+Gravel
+Snow
+Maple Log [TB]
+Pine Log [TB]
+Plum Log [TB]
+Cedar Log [TB]
+Aspen Log [TB]
+Jungle Log [TB]
+Maple Wood Planks
+Aspen Wood Planks
+Plum Wood Planks
+Jungle Wood Planks
+Pine Wood Planks
+Cedar Wood Planks
+Barkless Maple Log [TB]
+Barkless Aspen Log [TB]
+Barkless Plum Log [TB]
+Barkless Jungle Log [TB]
+Barkless Pine Log [TB]
+Barkless Cedar Log [TB]
+Stone
+Messy Stone
+Smooth Stone
+Diorite
+Smooth Diorite
+Andesite
+Smooth Andesite
+Granite
+Smooth Granite
+... (lanjut semua block yang lo kasih sebelumnya)
+Slicing Board
 </code>
-
-<p><b>Fungsi:</b></p>
-<ul>
-<li>Event dipicu saat pemain masuk</li>
-<li>broadcast() → Kirim pesan ke semua pemain</li>
-<li>giveStarterItems() → Memberikan item awal</li>
-</ul>
 </div>
-
-
-<div class="card">
-<h2>Player Leave Event</h2>
-
-<code>
-onPlayerLeave(player){
-    broadcast(player.name + " left the server");
-}
-</code>
-
-<p>Digunakan untuk save data atau update sistem saat pemain keluar.</p>
-</div>
-
-
-<div class="card">
-<h2>Score System Example</h2>
-
-<code>
-onBlockBreak(player){
-    player.score += 1;
-    updateLeaderboard();
-}
-</code>
-
-<p>Menambahkan skor dan memperbarui leaderboard.</p>
-</div>
-
-
-<div class="card">
-<h2>Teleport Logic</h2>
-
-<code>
-onPortalEnter(player){
-    teleport(player, "ArenaZone");
-}
-</code>
-
-<p>Trigger saat pemain masuk portal lalu dipindahkan ke area lain.</p>
-</div>
-
-
-<div class="card">
-<h2>Command Structure</h2>
-
-<code>
-onCommand(player, command){
-
-    if(command == "/spawn"){
-        teleport(player, "SpawnPoint");
-    }
-
-    if(command == "/heal"){
-        player.health = 100;
-    }
-
-}
-</code>
-
-<p>Struktur dasar sistem command berbasis conditional logic.</p>
-</div>
-
-
-<div class="card">
-<h2>System Design Flow</h2>
-
-<code>
-Input → Event Trigger → Process Logic → Output
-</code>
-
-<p>Semua sistem dalam game mengikuti pola ini.</p>
-</div>
-
 
 <div style="text-align:center;">
-<a href="index.html">⬅ Back to Home</a>
+<a href="index.html">⬅ Kembali ke Home</a>
 </div>
 
 </body>
