@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>BloxdCore - Commands</title>
+<meta charset="UTF-8">
+
+<style>
+body{
+    font-family: Arial;
+    background:#0f172a;
+    color:white;
+    margin:0;
+    padding:20px;
+}
+h1{
+    text-align:center;
+    color:#00c3ff;
+}
+.card{
+    background:#1e293b;
+    padding:20px;
+    margin:20px 0;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,195,255,0.3);
+}
+code{
+    display:block;
+    background:black;
+    padding:10px;
+    margin-top:10px;
+    border-radius:5px;
+    color:#00ffcc;
+}
+a{
+    color:#00c3ff;
+    text-decoration:none;
+}
+a:hover{
+    color:white;
+}
+</style>
+
+</head>
+<body>
+
+<h1>BloxdCore Command Architecture</h1>
+
+<div class="card">
+<h2>Basic Command Structure</h2>
+<p>Struktur umum command system:</p>
+<code>
+/command argument1 argument2
+</code>
+</div>
+
+<div class="card">
+<h2>Teleport System Logic (Concept)</h2>
+<code>
+if player enters portal:
+   move player to destination
+</code>
+</div>
+
+<div class="card">
+<h2>Score Tracking Logic</h2>
+<code>
+player.score += 1
+update leaderboard
+</code>
+</div>
+
+<div class="card">
+<h2>System Design Flow</h2>
+<code>
+Input → Process → Output
+</code>
+</div>
+
+<div style="text-align:center;">
+<a href="index.html">⬅ Back to Home</a>
+</div>
+
+</body>
+</html>
