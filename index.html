@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>BloxdCore - Home</title>
+<meta charset="UTF-8">
+
+<style>
+body{
+    font-family: Arial;
+    background:#0f172a;
+    color:white;
+    margin:0;
+    padding:0;
+    text-align:center;
+    overflow-x:hidden;
+    /* Wallpaper logo background */
+    background-image: url('data:image/svg+xml;utf8,\
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">\
+<circle cx="100" cy="100" r="90" stroke="%2300c3ff" stroke-width="5" fill="none"/>\
+<text x="50%" y="55%" text-anchor="middle" fill="%2300c3ff" font-size="40" font-family="Arial" dy=".3em">B</text>\
+</svg>');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 200px 200px;
+}
+
+header{
+    background:#1e293b;
+    padding:80px 30px 30px 30px; /* lebih atas buat logo wallpaper */
+    box-shadow:0 0 15px rgba(0,195,255,0.3);
+    position: relative;
+}
+
+.logo-text{
+    font-family: 'Arial Black', sans-serif;
+    font-size:50px;
+    color:#00c3ff;
+    text-shadow: 0 0 10px #00c3ff, 0 0 20px #00ffff;
+    animation: glow 2s ease-in-out infinite alternate;
+    margin-bottom:10px;
+}
+
+@keyframes glow {
+    0% { text-shadow: 0 0 5px #00c3ff, 0 0 10px #00c3ff; }
+    50% { text-shadow: 0 0 10px #00c3ff, 0 0 20px #00ffff; }
+    100% { text-shadow: 0 0 5px #00c3ff, 0 0 10px #00c3ff; }
+}
+
+.section{
+    padding:40px 20px;
+}
+
+/* Tombol floating + hover dramatis */
+button{
+    padding:12px 20px;
+    margin:10px;
+    background:#00c3ff;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+}
+
+button:hover{
+    background:white;
+    transform: translateY(-12px) scale(1.12);
+    box-shadow: 0 15px 30px rgba(0,195,255,0.9), 0 0 20px rgba(0,255,255,0.5) inset;
+    animation: pulse 1s infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 15px 30px rgba(0,195,255,0.9), 0 0 20px rgba(0,255,255,0.5) inset; }
+    50% { box-shadow: 0 20px 35px rgba(0,255,255,1), 0 0 25px rgba(0,255,255,0.7) inset; }
+    100% { box-shadow: 0 15px 30px rgba(0,195,255,0.9), 0 0 20px rgba(0,255,255,0.5) inset; }
+}
+
+.footer{
+    margin-top:40px;
+    padding:20px;
+    background:#1e293b;
+    font-size:14px;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+<div class="logo-text">BloxdCore</div>
+<p>Advanced Coding Resources for Bloxd Developers</p>
+<p>Scripts, Commands & Creative Logic Systems</p>
+<p>Building Smarter Systems Inside Bloxd</p>
+</header>
+
+<div class="section">
+<h2>Developer Identity</h2>
+<p>Engineered by Hidayat</p>
+<p>Designed for Competitive Builders</p>
+<p>Where Logic Meets Creativity</p>
+
+<br>
+
+<a href="scripts.html">
+<button>Explore Scripts</button>
+</a>
+
+<a href="commands.html">
+<button>View Commands</button>
+</a>
+
+<a href="bloxd-docs.html">
+<button>Bloxd.io Coding And Helper Document</button>
+</a>
+
+</div>
+
+<div class="footer">
+Bloxd Scripting & Command Architecture <br>
+Client-Side Enhancement & System Design <br>
+© 2026 BloxdCore Coding Division
+</div>
+
+</body>
+</html>
