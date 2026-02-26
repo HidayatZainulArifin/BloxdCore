@@ -1,215 +1,38 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BloxdCore Documentation</title>
-<link rel="icon" href="BloxdCore.png">
-<style>
-/* ===== GENERAL STYLES ===== */
-body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg,#0f172a,#1e293b);
-    color: white;
-}
-a { text-decoration: none; color: #00c3ff; transition: 0.2s; }
-a:hover { color: #ffffff; }
-h1, h2 { margin: 0; }
-h1 { text-align: center; color: #00c3ff; padding: 20px 0; font-size: 2.5em; }
-h2 { color: #00ffcc; margin-bottom: 10px; }
-
-/* ===== NAVBAR ===== */
-.navbar {
-    background: #111827;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-    box-shadow: 0 2px 10px rgba(0,255,255,0.2);
-}
-.navbar .logo { font-size: 1.5em; font-weight: bold; color: #00c3ff; }
-.navbar a { margin-left: 20px; font-weight: bold; }
-
-/* ===== CARD ===== */
-.card {
-    background: #1e293b;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,195,255,0.3);
-    max-width: 1000px;
-    transition: transform 0.2s;
-}
-.card:hover { transform: translateY(-5px); }
-
-/* ===== CODE BLOCK ===== */
-code {
-    display: block;
-    background: #000000cc;
-    padding: 15px;
-    margin-top: 10px;
-    border-radius: 8px;
-    color: #00ffcc;
-    white-space: pre-wrap;
-    overflow-x: auto;
-    max-height: 600px;
-}
-
-/* ===== BUTTON ===== */
-.button {
-    display: inline-block;
-    background: #00c3ff;
-    color: #0f172a;
-    font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 10px;
-    transition: 0.2s;
-    margin: 10px 0;
-}
-.button:hover { background: #00ffcc; color: #111827; transform: scale(1.05); }
-
-/* ===== FOOTER ===== */
-footer {
-    text-align: center;
-    padding: 20px 0;
-    color: #888;
-    font-size: 0.9em;
-}
-</style>
+    <meta charset="UTF-8">
+    <title>BloxdCore - Documentation</title>
+    <style>
+        :root { --main-blue: #00c3ff; --dark-bg: #0a0e1a; --card-bg: #161e2e; }
+        body { background: var(--dark-bg); color: white; font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .container { max-width: 900px; margin: auto; }
+        h1, h2 { color: var(--main-blue); }
+        code { background: #000; color: #00ffcc; padding: 15px; border-radius: 8px; display: block; overflow-x: auto; margin: 15px 0; border: 1px solid #333; }
+        .card { background: var(--card-bg); padding: 20px; border-radius: 12px; margin-bottom: 25px; border: 1px solid #222; }
+        .back-link { color: var(--main-blue); text-decoration: none; font-weight: bold; }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <a href="index.html" class="back-link">← BACK TO HOME</a>
+        <h1>Documentation</h1>
+        
+        <div class="card">
+            <h2>Block Names</h2>
+            <p>Daftar nama blok dasar yang bisa digunakan dalam script:</p>
+            <code>Dirt, Grass Block, Sand, Clay, Gravel, Snow, Maple Log, Gold Ore, Moonstone Ore...</code>
+        </div>
 
-<!-- ===== NAVBAR ===== -->
-<div class="navbar">
-    <div class="logo">BloxdCore</div>
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="#blocks">Blocks</a>
-        <a href="#callbacks">Callbacks</a>
-        <a href="#examples">Scripts & Events</a>
-    </div>
-</div>
-
-<!-- ===== HEADER ===== -->
-<h1>BloxdCore Documentation</h1>
-
-<!-- ===== BLOCK NAMES ===== -->
-<div id="blocks" class="card">
-    <h2>Daftar Block Names</h2>
-    <p>Semua block names dan varian meta di BloxdCore:</p>
-    <code>
-# Block Names (1006 blocks)
-# Gunakan ROOT block persis seperti ini (tanpa suffix)
-# Beberapa block memiliki varian meta, ditandai dalam tanda kurung []
-# R = rotation, O = open/closed, H = halfblockPlacement, G = growing
-# TB = treeBase, TC = treeCanopy, B = books, FG = freshlyGrown, RT = roots
-# LV = lava, TP = top, GR = grassRoots, BK = breaking, FL = flashing
-
-Dirt [GR]
-Messy Dirt
-Grass Block
-Sand
-Clay
-Gravel
-Snow
-Maple Log [TB]
-Pine Log [TB]
-Plum Log [TB]
-Cedar Log [TB]
-Aspen Log [TB]
-Jungle Log [TB]
-Maple Wood Planks
-Aspen Wood Planks
-... (lanjutkan semua block names)
-    </code>
-</div>
-
-<!-- ===== CALLBACKS & EVENTS ===== -->
-<div id="callbacks" class="card">
-    <h2>Callbacks & Events</h2>
-    <p>Daftar callbacks yang bisa dipakai di BloxdCore. Gunakan ini untuk memicu script ketika suatu event terjadi:</p>
-    <code>
-# Player Events
-onPlayerJoin(player)
-onPlayerLeave(player)
-onPlayerChat(player, message)
-onPlayerMove(player, fromPos, toPos)
-onPlayerRespawn(player)
-onPlayerDeath(player, killer)
-
-# Block Events
+        <div class="card">
+            <h2>Callbacks (Events)</h2>
+            <p>Gunakan ini di menu F8 untuk membuat mekanik game:</p>
+            <code>
+onPlayerChat(player, message)<br>
+onPlayerMove(player, from, to)<br>
 onBlockPlace(player, block)
-onBlockBreak(player, block)
-onBlockInteract(player, block)
-onBlockUpdate(block)
-onBlockTick(block)
-
-# Entity Events
-onEntitySpawn(entity)
-onEntityDeath(entity, killer)
-onEntityInteract(player, entity)
-onEntityDamage(entity, amount, attacker)
-
-# Item & Inventory Events
-onItemUse(player, item)
-onItemPickup(player, item)
-onItemDrop(player, item)
-onInventoryOpen(player, inventory)
-onInventoryClose(player, inventory)
-
-# Game Events
-onGameStart()
-onGameEnd()
-onCheckpointReached(player, checkpoint)
-onGoalReached(player, goal)
-onTimerTick(timer)
-
-# Custom Events
-triggerCustomEvent(name, data)
-listenCustomEvent(name, callback)
-
-# Miscellaneous
-onExplosion(location, radius, source)
-onWeatherChange(newWeather)
-onDayNightChange(newTime)
-onServerShutdown()
-    </code>
-</div>
-
-<!-- ===== SCRIPTS & EVENT EXAMPLES ===== -->
-<div id="examples" class="card">
-    <h2>Scripts & Event Examples</h2>
-    <p>Contoh penggunaan callbacks di script BloxdCore:</p>
-    <code>
-# Contoh: Memunculkan pesan saat pemain join
-onPlayerJoin(player):
-    sendMessage(player, "Selamat datang di server!")
-
-# Contoh: Ledakan saat block dihancurkan
-onBlockBreak(player, block):
-    if block.name == "Moonstone Ore":
-        createExplosion(block.position, 5)
-
-# Contoh: Custom event
-triggerCustomEvent("ShowFireworks", {player: player})
-listenCustomEvent("ShowFireworks", function(data):
-    spawnFirework(data.player.position)
-    </code>
-</div>
-
-<!-- ===== BACK TO HOME ===== -->
-<div style="text-align:center;">
-    <a class="button" href="index.html">⬅ Back to Home</a>
-</div>
-
-<!-- ===== FOOTER ===== -->
-<footer>
-BloxdCore Documentation &copy; 2026 | Developed by Tim Sukses
-</footer>
-
+            </code>
+        </div>
+    </div>
 </body>
 </html>
