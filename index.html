@@ -6,49 +6,47 @@
     <title>BloxdCore Hub - Home</title>
     <style>
         :root { --main-blue: #00c3ff; --dark-bg: #0a0e1a; --card-bg: #161e2e; }
-        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--dark-bg); color: white; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--dark-bg); color: white; display: flex; flex-direction: column; align-items: center; min-height: 100vh; overflow-x: hidden; }
         .header { margin-top: 50px; text-align: center; }
-        .logo-img { width: 320px; filter: drop-shadow(0 0 20px var(--main-blue)); }
+        .logo-img { width: 320px; filter: drop-shadow(0 0 20px var(--main-blue)); transition: 0.3s; }
+        .logo-img:hover { transform: scale(1.05); }
         .container { width: 90%; max-width: 1000px; margin-top: 40px; padding-bottom: 50px; }
         .nav-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .btn { background: var(--card-bg); border: 2px solid var(--main-blue); color: var(--main-blue); padding: 30px; border-radius: 15px; text-decoration: none; text-align: center; font-weight: bold; font-size: 1.3em; transition: 0.3s; box-shadow: 0 0 15px rgba(0, 195, 255, 0.2); }
+        .btn { background: var(--card-bg); border: 2px solid var(--main-blue); color: var(--main-blue); padding: 30px; border-radius: 15px; text-decoration: none; text-align: center; font-weight: bold; font-size: 1.3em; transition: 0.3s; box-shadow: 0 0 15px rgba(0, 195, 255, 0.2); cursor: pointer; }
         .btn:hover { background: var(--main-blue); color: #000; transform: translateY(-5px); box-shadow: 0 0 30px var(--main-blue); }
-        .section-card { background: var(--card-bg); border-radius: 15px; padding: 25px; margin-top: 30px; border: 1px solid #333; }
+        .section-card { background: var(--card-bg); border-radius: 15px; padding: 25px; margin-top: 30px; border: 1px solid #333; position: relative; }
         .section-card h2 { color: var(--main-blue); margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 10px; }
         .grid-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
         .btn-s { background: #1e293b; border: 1px solid var(--main-blue); color: white; padding: 12px 18px; border-radius: 8px; text-decoration: none; font-size: 0.95em; transition: 0.2s; }
         .btn-s:hover { background: var(--main-blue); color: #000; }
+        .copy-site-btn { background: var(--main-blue); color: black; border: none; padding: 10px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.2s; }
+        .copy-site-btn:hover { opacity: 0.8; transform: scale(1.1); }
         footer { margin: 50px 0; color: #666; font-size: 0.9em; text-align: center; }
     </style>
 </head>
 <body>
     <div class="header">
         <img src="BloxdCore.png" alt="BloxdCore Logo" class="logo-img">
-        <p style="color: var(--main-blue); font-weight: bold; letter-spacing: 2px;">ADVANCED CODING RESOURCES</p>
+        <p style="color: var(--main-blue); font-weight: bold; letter-spacing: 2px;">THE CENTRAL LOGIC SYSTEM</p>
     </div>
     <div class="container">
         <div class="nav-grid">
             <a href="docs.html" class="btn">DOCS & API</a>
             <a href="commands.html" class="btn">CHAT COMMANDS</a>
-            <a href="scripts.html" class="btn">SCRIPT EXAMPLES</a>
+            <a href="scripts.html" class="btn">READY SCRIPTS</a>
         </div>
         <div class="section-card">
-            <h2>YouTube Tutorials</h2>
-            <div class="grid-links">
-                <a href="https://www.youtube.com/watch?v=kbDNBKi-Ddc" class="btn-s" target="_blank">Tutorial 1</a>
-                <a href="https://www.youtube.com/@BloxdMayhem" class="btn-s" target="_blank">BloxdMayhem Channel</a>
-                <a href="https://www.youtube.com/watch?v=QPZZrlj90qE" class="btn-s" target="_blank">Tutorial 2</a>
-                <a href="https://www.youtube.com/watch?v=wmfGxslv3hU" class="btn-s" target="_blank">Tutorial 3</a>
-            </div>
-        </div>
-        <div class="section-card">
-            <h2>Official Repositories</h2>
-            <div class="grid-links">
-                <a href="https://github.com/Bloxdy/code-api" class="btn-s" target="_blank">Bloxdy API (Official)</a>
-                <a href="https://github.com/GlitchHunterCoder/Bloxd.io-API-code" class="btn-s" target="_blank">Community Library</a>
-            </div>
+            <h2>Quick Share</h2>
+            <p>Bagikan website BloxdCore ke teman sesama coder!</p>
+            <button class="copy-site-btn" onclick="copyLink()">Copy Website Link</button>
         </div>
     </div>
-    <footer>&copy; 2026 BloxdCore • Developed by TIM SUKSES</footer>
+    <footer>&copy; 2026 BloxdCore Hub • Developed by TIM SUKSES</footer>
+    <script>
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href);
+            alert("Website link copied!");
+        }
+    </script>
 </body>
 </html>
