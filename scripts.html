@@ -1,58 +1,174 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-<title>BloxdCore - Scripts & Events</title>
 <meta charset="UTF-8">
-<link rel="icon" type="image/png" href="BloxdCore.png">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BloxdCore Scripts & Event Examples</title>
+<link rel="icon" href="BloxdCore.png">
 <style>
-body{font-family: Arial; background:#0f172a; color:white; margin:0; padding:20px;}
-h1{text-align:center;color:#00c3ff;}
-.card{background:#1e293b; padding:20px; margin:20px 0; border-radius:10px; box-shadow:0 0 10px rgba(0,195,255,0.3);}
-code{display:block; background:black; padding:12px; margin-top:10px; border-radius:6px; color:#00ffcc; white-space:pre-wrap;}
-a{color:#00c3ff;text-decoration:none;}
-a:hover{color:white;}
+/* ===== GENERAL ===== */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg,#0f172a,#1e293b);
+    color: white;
+}
+a { text-decoration: none; color: #00c3ff; transition: 0.2s; }
+a:hover { color: #ffffff; }
+h1, h2 { margin: 0; }
+h1 { text-align: center; color: #00c3ff; padding: 20px 0; font-size: 2.5em; }
+h2 { color: #00ffcc; margin-bottom: 10px; }
+
+/* ===== NAVBAR ===== */
+.navbar {
+    background: #111827;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 2px 10px rgba(0,255,255,0.2);
+}
+.navbar .logo { font-size: 1.5em; font-weight: bold; color: #00c3ff; }
+.navbar a { margin-left: 20px; font-weight: bold; }
+
+/* ===== CARD ===== */
+.card {
+    background: #1e293b;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,195,255,0.3);
+    max-width: 1000px;
+    transition: transform 0.2s;
+}
+.card:hover { transform: translateY(-5px); }
+
+/* ===== CODE BLOCK ===== */
+code {
+    display: block;
+    background: #000000cc;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 8px;
+    color: #00ffcc;
+    white-space: pre-wrap;
+    overflow-x: auto;
+    max-height: 600px;
+}
+
+/* ===== BUTTON ===== */
+.button {
+    display: inline-block;
+    background: #00c3ff;
+    color: #0f172a;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: 0.2s;
+    margin: 10px 0;
+}
+.button:hover { background: #00ffcc; color: #111827; transform: scale(1.05); }
+
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    color: #888;
+    font-size: 0.9em;
+}
 </style>
 </head>
 <body>
 
+<!-- ===== NAVBAR ===== -->
+<div class="navbar">
+    <div class="logo">BloxdCore</div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="docs.html">Docs</a>
+        <a href="#examples">Scripts</a>
+    </div>
+</div>
+
+<!-- ===== HEADER ===== -->
 <h1>BloxdCore Scripts & Event Examples</h1>
 
-<div class="card">
-<h2>Player Join Event</h2>
-<code>
-onPlayerJoin(player){
-    broadcast(player.name + " joined the server");
-    giveStarterItems(player);
-}
-</code>
-<p>Trigger saat pemain masuk, memberi item awal dan broadcast ke semua pemain.</p>
+<!-- ===== EXAMPLES ===== -->
+<div id="examples" class="card">
+    <h2>Player Scripts</h2>
+    <p>Contoh script memanfaatkan player callbacks:</p>
+    <code>
+# Pesan sambutan saat player join
+onPlayerJoin(player):
+    sendMessage(player, "Selamat datang di server BloxdCore!")
+
+# Respawn player dengan efek partikel
+onPlayerRespawn(player):
+    spawnParticles(player.position, "spark", 30)
+    teleport(player, getSpawnPoint())
+    </code>
 </div>
 
 <div class="card">
-<h2>Player Leave Event</h2>
-<code>
-onPlayerLeave(player){
-    broadcast(player.name + " left the server");
-}
-</code>
-<p>Digunakan untuk save data atau update sistem saat pemain keluar.</p>
+    <h2>Block Scripts</h2>
+    <p>Script contoh untuk block events:</p>
+    <code>
+# Ledakan saat Moonstone Ore dihancurkan
+onBlockBreak(player, block):
+    if block.name == "Moonstone Ore":
+        createExplosion(block.position, 5)
+
+# Auto-grow tanaman
+onBlockTick(block):
+    if block.name == "Wheat_stage1":
+        setBlock(block.position, "Wheat_stage2")
+    </code>
 </div>
 
 <div class="card">
-<h2>Score System Example</h2>
-<code>
-onBlockBreak(player){
-    player.score += 1;
-    updateLeaderboard();
-}
-</code>
-<p>Menambahkan skor dan memperbarui leaderboard.</p>
+    <h2>Custom Events</h2>
+    <p>Contoh penggunaan custom events:</p>
+    <code>
+# Memicu fireworks untuk player tertentu
+triggerCustomEvent("ShowFireworks", {player: player})
+
+# Menangkap custom event
+listenCustomEvent("ShowFireworks", function(data):
+    spawnFirework(data.player.position)
+    </code>
 </div>
 
+<div class="card">
+    <h2>Misc Scripts</h2>
+    <p>Lain-lain:</p>
+    <code>
+# Mengubah cuaca
+onWeatherChange(newWeather):
+    if newWeather == "rain":
+        sendMessageToAll("Hujan turun, bawa payung!")
+
+# Day/Night transition
+onDayNightChange(newTime):
+    if newTime == "night":
+        spawnNightMobs()
+    else:
+        despawnNightMobs()
+    </code>
+</div>
+
+<!-- ===== BACK BUTTON ===== -->
 <div style="text-align:center;">
-<a href="index.html">⬅ Back to Home</a>
+    <a class="button" href="docs.html">⬅ Back to Docs</a>
+    <a class="button" href="index.html">⬅ Back to Home</a>
 </div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+BloxdCore Scripts & Event Examples &copy; 2026 | Developed by Tim Sukses
+</footer>
 
 </body>
 </html>
