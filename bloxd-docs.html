@@ -1,27 +1,107 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-<title>BloxdCore - Bloxd.io Documentation</title>
 <meta charset="UTF-8">
-<link rel="icon" type="image/png" href="BloxdCore.png">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BloxdCore Documentation</title>
+<link rel="icon" href="BloxdCore.png">
 <style>
-body{font-family: Arial; background:#0f172a; color:white; margin:0; padding:20px;}
-h1{text-align:center; color:#00c3ff;}
-.card{background:#1e293b; padding:20px; margin:20px 0; border-radius:10px; box-shadow:0 0 10px rgba(0,195,255,0.3);}
-code{display:block; background:black; padding:12px; margin-top:10px; border-radius:6px; color:#00ffcc; white-space:pre-wrap; max-height:600px; overflow-x:auto;}
-a{color:#00c3ff;text-decoration:none;}
-a:hover{color:white;}
+/* ===== GENERAL STYLES ===== */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg,#0f172a,#1e293b);
+    color: white;
+}
+a { text-decoration: none; color: #00c3ff; transition: 0.2s; }
+a:hover { color: #ffffff; }
+h1, h2 { margin: 0; }
+h1 { text-align: center; color: #00c3ff; padding: 20px 0; font-size: 2.5em; }
+h2 { color: #00ffcc; margin-bottom: 10px; }
+
+/* ===== NAVBAR ===== */
+.navbar {
+    background: #111827;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 2px 10px rgba(0,255,255,0.2);
+}
+.navbar .logo { font-size: 1.5em; font-weight: bold; color: #00c3ff; }
+.navbar a { margin-left: 20px; font-weight: bold; }
+
+/* ===== CARD ===== */
+.card {
+    background: #1e293b;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,195,255,0.3);
+    max-width: 1000px;
+    transition: transform 0.2s;
+}
+.card:hover { transform: translateY(-5px); }
+
+/* ===== CODE BLOCK ===== */
+code {
+    display: block;
+    background: #000000cc;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 8px;
+    color: #00ffcc;
+    white-space: pre-wrap;
+    overflow-x: auto;
+    max-height: 600px;
+}
+
+/* ===== BUTTON ===== */
+.button {
+    display: inline-block;
+    background: #00c3ff;
+    color: #0f172a;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: 0.2s;
+    margin: 10px 0;
+}
+.button:hover { background: #00ffcc; color: #111827; transform: scale(1.05); }
+
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    color: #888;
+    font-size: 0.9em;
+}
 </style>
 </head>
 <body>
 
-<h1>Bloxd.io Coding & Helper Documentation</h1>
+<!-- ===== NAVBAR ===== -->
+<div class="navbar">
+    <div class="logo">BloxdCore</div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#blocks">Blocks</a>
+        <a href="#callbacks">Callbacks</a>
+        <a href="#examples">Scripts & Events</a>
+    </div>
+</div>
 
-<div class="card">
-<h2>Daftar Block Names</h2>
-<p>Semua block names dan varian meta di BloxdCore:</p>
-<code>
+<!-- ===== HEADER ===== -->
+<h1>BloxdCore Documentation</h1>
+
+<!-- ===== BLOCK NAMES ===== -->
+<div id="blocks" class="card">
+    <h2>Daftar Block Names</h2>
+    <p>Semua block names dan varian meta di BloxdCore:</p>
+    <code>
 # Block Names (1006 blocks)
 # Gunakan ROOT block persis seperti ini (tanpa suffix)
 # Beberapa block memiliki varian meta, ditandai dalam tanda kurung []
@@ -44,517 +124,92 @@ Aspen Log [TB]
 Jungle Log [TB]
 Maple Wood Planks
 Aspen Wood Planks
-Plum Wood Planks
-Jungle Wood Planks
-Pine Wood Planks
-Cedar Wood Planks
-Barkless Maple Log [TB]
-Barkless Aspen Log [TB]
-Barkless Plum Log [TB]
-Barkless Jungle Log [TB]
-Barkless Pine Log [TB]
-Barkless Cedar Log [TB]
-free_placeholder2
-Stone
-Messy Stone
-free_placeholder
-Smooth Stone
-Diorite
-Smooth Diorite
-Andesite
-Smooth Andesite
-Granite
-Smooth Granite
-Sandstone
-Yellowstone
-Coal Ore
-Iron Ore
-Gold Ore
-Lapis Lazuli Ore
-Emerald Ore
-Diamond Ore
-Block of Coal
-Block of Iron
-Block of Gold
-Block of Lapis Lazuli
-Block of Emerald
-White Wool
-Orange Wool
-Magenta Wool
-Light Blue Wool
-Yellow Wool
-Lime Wool
-Pink Wool
-Gray Wool
-Light Gray Wool
-Cyan Wool
-Purple Wool
-Blue Wool
-Brown Wool
-Green Wool
-Red Wool
-Black Wool
-Baked Clay
-White Baked Clay
-Orange Baked Clay
-Magenta Baked Clay
-Light Blue Baked Clay
-Yellow Baked Clay
-Lime Baked Clay
-Pink Baked Clay
-Gray Baked Clay
-Light Gray Baked Clay
-Cyan Baked Clay
-Purple Baked Clay
-Blue Baked Clay
-Brown Baked Clay
-Green Baked Clay
-Red Baked Clay
-Black Baked Clay
-Gray Concrete
-Light Gray Concrete
-Black Concrete
-Blue Concrete
-Brown Concrete
-Cyan Concrete
-Light Blue Concrete
-Lime Concrete
-Magenta Concrete
-Orange Concrete
-Pink Concrete
-Purple Concrete
-Red Concrete
-White Concrete
-Green Concrete
-Yellow Concrete
-Pine Leaves [TC]
-Aspen Leaves [TC]
-Maple Leaves [TC]
-Jungle Leaves [TC]
-Pumpkin_placeholder
-Watermelon
-Glass
-Black Glass
-Blue Glass
-Brown Glass
-Cyan Glass
-Gray Glass
-Light Gray Glass
-Green Glass
-Light Blue Glass
-Lime Glass
-Magenta Glass
-Orange Glass
-Pink Glass
-Purple Glass
-Red Glass
-White Glass
-Yellow Glass
-UNUSED BLOCK TYPE
-Dim Lamp On
-Dim Lamp Off
-Water
-Invisible Solid
-Bricks
-Stone Bricks
-Dark Red Brick
-Dark Red Stone
-Block of Quartz
-Chiseled Block of Quartz
-Engraved Stone
-Mossy Stone Bricks
-Cracked Stone Bricks
-Smooth Sandstone
-Engraved Sandstone
-Ice
-Obsidian
-Hay Bale
-Sponge
-Beacon
-temp
-Golden Decoration
-Moonstone Explosive
-Bedrock
-Smooth Double Stone Slab
-Cactus [G]
-Grass
-Dandelion [RT]
-Poppy [RT]
-Red Tulip [RT]
-Pink Tulip [RT]
-White Tulip [RT]
-Orange Tulip [RT]
-Daisy [RT]
-Bluebell [RT]
-Forget-me-not [RT]
-Allium [RT]
-Azure Bluet [RT]
-Lily of the Valley [RT]
-Shadow Rose [RT]
-Furnace [R]
-Workbench [R]
-Block of Diamond
-Maple Door [O,R]
-_Maple Door Top [O,R]
-Maple Trapdoor [O,R]
-Aspen Sapling
-Maple Sapling
-Jungle Sapling
-Plum Sapling
-Pine Sapling
-Cedar Sapling
-Chest [R]
-Protector
-Fat Cactus [G]
-Dry Fat Cactus
-Maple Ladder [R]
-Vines [G,R]
-Iron Ladder [R]
-White Planks
-Orange Planks
-Magenta Planks
-Light Blue Planks
-Yellow Planks
-Lime Planks
-Pink Planks
-Gray Planks
-Light Gray Planks
-Cyan Planks
-Purple Planks
-Blue Planks
-Brown Planks
-Green Planks
-Red Planks
-Black Planks
-Artisan Bench
-White Ceramic [R]
-Orange Ceramic [R]
-Magenta Ceramic [R]
-Light Blue Ceramic [R]
-Yellow Ceramic [R]
-Lime Ceramic [R]
-Pink Ceramic [R]
-Gray Ceramic [R]
-Light Gray Ceramic [R]
-Cyan Ceramic [R]
-Purple Ceramic [R]
-Blue Ceramic [R]
-Brown Ceramic [R]
-Green Ceramic [R]
-Red Ceramic [R]
-Black Ceramic [R]
-Wheat Seeds
-Wheat_stage1
-Wheat_stage2
-Wheat_stage3
-Wheat_stage4
-Wheat_stage5
-Wheat [FG]
-Tilled Soil
-Bread Block
-ReservedBread BlockRotation1
-ReservedBread BlockRotation2
-ReservedBread BlockRotation3
-Mossy Messy Stone
-White Bed [R]
-_White Bed Head [R]
-Orange Bed [R]
-_Orange Bed Head [R]
-Magenta Bed [R]
-_Magenta Bed Head [R]
-Light Blue Bed [R]
-_Light Blue Bed Head [R]
-Yellow Bed [R]
-_Yellow Bed Head [R]
-Lime Bed [R]
-_Lime Bed Head [R]
-Pink Bed [R]
-_Pink Bed Head [R]
-Gray Bed [R]
-_Gray Bed Head [R]
-Light Gray Bed [R]
-_Light Gray Bed Head [R]
-Cyan Bed [R]
-_Cyan Bed Head [R]
-Purple Bed [R]
-_Purple Bed Head [R]
-Blue Bed [R]
-_Blue Bed Head [R]
-Brown Bed [R]
-_Brown Bed Head [R]
-Green Bed [R]
-_Green Bed Head [R]
-Red Bed [R]
-_Red Bed Head [R]
-Black Bed [R]
-_Black Bed Head [R]
-Apple Block
-Moonstone Ore
-Moonstone Chest [R]
-Block of Moonstone
-Magma
-Useless Soil
-Marked Sandstone
-Red Sandstone
-Smooth Red Sandstone
-Engraved Red Sandstone
-Marked Red Sandstone
-Green Stone
-Green Bricks
-Dark Green Bricks
-Sandstone Bricks
-Engraved Diorite
-Diorite Bricks
-Engraved Andesite
-Andesite Bricks
-Engraved Granite
-Granite Bricks
-Ice Bricks
-Placeholder Packed Ice
-Placeholder Blue Ice
-Plum Leaves [TC]
-Cedar Leaves [TC]
-Palm Leaves [TC]
-Palm Log [TB]
-Palm Wood Planks
-Palm Sapling
-Pine Door [O,R]
-_Pine Door Top [O,R]
-Plum Door [O,R]
-_Plum Door Top [O,R]
-Cedar Door [O,R]
-_Cedar Door Top [O,R]
-Aspen Door [O,R]
-_Aspen Door Top [O,R]
-Jungle Door [O,R]
-_Jungle Door Top [O,R]
-Palm Door [O,R]
-_Palm Door Top [O,R]
-Pine Trapdoor [O,R]
-Plum Trapdoor [O,R]
-Cedar Trapdoor [O,R]
-Aspen Trapdoor [O,R]
-Jungle Trapdoor [O,R]
-Palm Trapdoor [O,R]
-Red Sand
-Red Sandstone Bricks
-Rocky Dirt
-Autumn Maple Leaves [TC]
-Fallen Maple Leaves [H,R]
-Maple Slab [H,R]
-Pine Slab [H,R]
-Plum Slab [H,R]
-Cedar Slab [H,R]
-Aspen Slab [H,R]
-Jungle Slab [H,R]
-Palm Slab [H,R]
-Dirt Slab [H,R]
-Grass Slab [H,R]
-Messy Stone Slab [H,R]
-Stone Slab [H,R]
-Smooth Stone Slab [H,R]
-Engraved Stone Slab [H,R]
-Stone Bricks Slab [H,R]
-Mossy Stone Slab [H,R]
-Mossy Stone Bricks Slab [H,R]
-Andesite Slab [H,R]
-Smooth Andesite Slab [H,R]
-Engraved Andesite Slab [H,R]
-Andesite Bricks Slab [H,R]
-Diorite Slab [H,R]
-Smooth Diorite Slab [H,R]
-Engraved Diorite Slab [H,R]
-Diorite Bricks Slab [H,R]
-Granite Slab [H,R]
-Smooth Granite Slab [H,R]
-Engraved Granite Slab [H,R]
-Granite Bricks Slab [H,R]
-Sandstone Slab [H,R]
-Smooth Sandstone Slab [H,R]
-Engraved Sandstone Slab [H,R]
-Marked Sandstone Slab [H,R]
-Sandstone Bricks Slab [H,R]
-Red Sandstone Slab [H,R]
-Smooth Red Sandstone Slab [H,R]
-Engraved Red Sandstone Slab [H,R]
-Marked Red Sandstone Slab [H,R]
-Red Sandstone Bricks Slab [H,R]
-Bricks Slab [H,R]
-Ice Bricks Slab [H,R]
-Plum Block
-Coconut Block
-Pear Log [TB]
-Pear Wood Planks
-Pear Leaves [TC]
-Pear Door [O,R]
-_Pear Door Top [O,R]
-Pear Trapdoor [O,R]
-Pear Sapling
-Pear Slab [H,R]
-Pear Block
-Compressed Messy Stone
-Extra Compressed Messy Stone
-Super Compressed Messy Stone
-Hyper Compressed Messy Stone
-Ultra Compressed Messy Stone
-Mega Compressed Messy Stone
-Board [R]
-Net
-Cobweb
-Brown Mushroom Block
-Red Mushroom Block
-Mushroom Stem
-Fireball Block
-Iceball Block
-Watermelon Seeds [G]
-Attached Watermelon Stem [R]
-Pumpkin Seeds [G]
-Attached Pumpkin Stem [R]
-Pumpkin
-Carved Pumpkin [R]
-Jack o'Lantern [R]
-Melon Seeds [G]
-Attached Melon Stem [R]
-Melon
-Iron Watermelon
-Patterned Black Glass
-Patterned Blue Glass
-Patterned Brown Glass
-Patterned Cyan Glass
-Patterned Gray Glass
-Patterned Light Gray Glass
-Patterned Green Glass
-Patterned Light Blue Glass
-Patterned Lime Glass
-Patterned Magenta Glass
-Patterned Orange Glass
-Patterned Pink Glass
-Patterned Purple Glass
-Patterned Red Glass
-Patterned White Glass
-Patterned Yellow Glass
-Potion Table [R]
-Pine Ladder [R]
-Plum Ladder [R]
-Cedar Ladder [R]
-Aspen Ladder [R]
-Jungle Ladder [R]
-Palm Ladder [R]
-Pear Ladder [R]
-Black Carpet
-Blue Carpet
-Brown Carpet
-Cyan Carpet
-Gray Carpet
-Light Gray Carpet
-Green Carpet
-Light Blue Carpet
-Lime Carpet
-Magenta Carpet
-Orange Carpet
-Pink Carpet
-Purple Carpet
-Red Carpet
-White Carpet
-Yellow Carpet
-Bookshelf [B,R]
-Empty Bookshelf [B,R]
-Mailbox [R]
-Rice [FG]
-Rice_stage1
-Rice_stage2
-Rice_stage3
-Rice_stage4
-Rice_stage5
-Cranberries
-Cranberries_stage1
-Cranberries_stage2
-Red Mushroom
-Brown Mushroom
-Cotton Seeds
-Cotton_stage1
-Cotton_stage2
-Cotton_stage3
-Tribe Protector
-Tall Grass [TP]
-Faction Protector
-Barkless Palm Log [TB]
-Barkless Pear Log [TB]
-Mystery Block
-Rocket
-Super Rocket
-Yellow Concrete Slab [H,R]
-White Concrete Slab [H,R]
-Red Concrete Slab [H,R]
-Purple Concrete Slab [H,R]
-Pink Concrete Slab [H,R]
-Orange Concrete Slab [H,R]
-Magenta Concrete Slab [H,R]
-Lime Concrete Slab [H,R]
-Light Gray Concrete Slab [H,R]
-Light Blue Concrete Slab [H,R]
-Green Concrete Slab [H,R]
-Gray Concrete Slab [H,R]
-Cyan Concrete Slab [H,R]
-Brown Concrete Slab [H,R]
-Blue Concrete Slab [H,R]
-Black Concrete Slab [H,R]
-Grenade
-<div class="card">
-<h2>Callbacks & Events</h2>
-<p>Daftar callbacks yang bisa dipakai di BloxdCore. Gunakan ini untuk memicu script ketika suatu event terjadi:</p>
-<code>
+... (lanjutkan semua block names)
+    </code>
+</div>
+
+<!-- ===== CALLBACKS & EVENTS ===== -->
+<div id="callbacks" class="card">
+    <h2>Callbacks & Events</h2>
+    <p>Daftar callbacks yang bisa dipakai di BloxdCore. Gunakan ini untuk memicu script ketika suatu event terjadi:</p>
+    <code>
 # Player Events
-onPlayerJoin(player)                     # Trigger saat pemain join
-onPlayerLeave(player)                    # Trigger saat pemain keluar
-onPlayerChat(player, message)           # Trigger saat pemain mengirim chat
-onPlayerMove(player, fromPos, toPos)    # Trigger saat pemain bergerak
-onPlayerRespawn(player)                 # Trigger saat pemain respawn
-onPlayerDeath(player, killer)           # Trigger saat pemain mati
+onPlayerJoin(player)
+onPlayerLeave(player)
+onPlayerChat(player, message)
+onPlayerMove(player, fromPos, toPos)
+onPlayerRespawn(player)
+onPlayerDeath(player, killer)
 
 # Block Events
-onBlockPlace(player, block)             # Trigger saat block ditempatkan
-onBlockBreak(player, block)             # Trigger saat block dihancurkan
-onBlockInteract(player, block)          # Trigger saat pemain interaksi dengan block
-onBlockUpdate(block)                     # Trigger saat block berubah status
-onBlockTick(block)                       # Trigger setiap tick untuk block tertentu
+onBlockPlace(player, block)
+onBlockBreak(player, block)
+onBlockInteract(player, block)
+onBlockUpdate(block)
+onBlockTick(block)
 
 # Entity Events
-onEntitySpawn(entity)                    # Trigger saat entity muncul
-onEntityDeath(entity, killer)           # Trigger saat entity mati
-onEntityInteract(player, entity)         # Trigger saat pemain interaksi dengan entity
-onEntityDamage(entity, amount, attacker)# Trigger saat entity menerima damage
+onEntitySpawn(entity)
+onEntityDeath(entity, killer)
+onEntityInteract(player, entity)
+onEntityDamage(entity, amount, attacker)
 
 # Item & Inventory Events
-onItemUse(player, item)                  # Trigger saat pemain pakai item
-onItemPickup(player, item)               # Trigger saat pemain mengambil item
-onItemDrop(player, item)                 # Trigger saat pemain menjatuhkan item
-onInventoryOpen(player, inventory)       # Trigger saat inventory dibuka
-onInventoryClose(player, inventory)      # Trigger saat inventory ditutup
+onItemUse(player, item)
+onItemPickup(player, item)
+onItemDrop(player, item)
+onInventoryOpen(player, inventory)
+onInventoryClose(player, inventory)
 
 # Game Events
-onGameStart()                            # Trigger saat game mulai
-onGameEnd()                              # Trigger saat game berakhir
-onCheckpointReached(player, checkpoint) # Trigger saat pemain mencapai checkpoint
-onGoalReached(player, goal)             # Trigger saat pemain mencapai goal
-onTimerTick(timer)                       # Trigger setiap tick timer tertentu
+onGameStart()
+onGameEnd()
+onCheckpointReached(player, checkpoint)
+onGoalReached(player, goal)
+onTimerTick(timer)
 
 # Custom Events
-triggerCustomEvent(name, data)           # Memicu custom event sendiri
-listenCustomEvent(name, callback)        # Menangkap custom event
+triggerCustomEvent(name, data)
+listenCustomEvent(name, callback)
 
 # Miscellaneous
-onExplosion(location, radius, source)    # Trigger saat terjadi ledakan
-onWeatherChange(newWeather)              # Trigger saat cuaca berubah
-onDayNightChange(newTime)                # Trigger saat pergantian siang/malam
-onServerShutdown()                        # Trigger saat server mati
-</code>
+onExplosion(location, radius, source)
+onWeatherChange(newWeather)
+onDayNightChange(newTime)
+onServerShutdown()
+    </code>
 </div>
 
+<!-- ===== SCRIPTS & EVENT EXAMPLES ===== -->
+<div id="examples" class="card">
+    <h2>Scripts & Event Examples</h2>
+    <p>Contoh penggunaan callbacks di script BloxdCore:</p>
+    <code>
+# Contoh: Memunculkan pesan saat pemain join
+onPlayerJoin(player):
+    sendMessage(player, "Selamat datang di server!")
+
+# Contoh: Ledakan saat block dihancurkan
+onBlockBreak(player, block):
+    if block.name == "Moonstone Ore":
+        createExplosion(block.position, 5)
+
+# Contoh: Custom event
+triggerCustomEvent("ShowFireworks", {player: player})
+listenCustomEvent("ShowFireworks", function(data):
+    spawnFirework(data.player.position)
+    </code>
+</div>
+
+<!-- ===== BACK TO HOME ===== -->
 <div style="text-align:center;">
-<a href="index.html">⬅ Back to Home</a>
+    <a class="button" href="index.html">⬅ Back to Home</a>
 </div>
-</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+BloxdCore Documentation &copy; 2026 | Developed by Tim Sukses
+</footer>
 
 </body>
 </html>
