@@ -1,132 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BloxdCore - Home</title>
-<link rel="icon" type="image/png" href="BloxdCore.png">
-<style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #0f172a, #1e293b);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BloxdCore Hub - Home</title>
+    <style>
+        :root { --main-blue: #00c3ff; --dark-bg: #0a0e1a; --card-bg: #161e2e; }
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--dark-bg); color: white; display: flex; flex-direction: column; align-items: center; }
+        
+        .header { margin-top: 50px; text-align: center; }
+        .logo-img { width: 300px; filter: drop-shadow(0 0 15px var(--main-blue)); }
+        
+        .container { width: 90%; max-width: 900px; margin-top: 40px; }
+        .nav-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        
+        .btn { background: var(--card-bg); border: 2px solid var(--main-blue); color: var(--main-blue); padding: 25px; border-radius: 15px; text-decoration: none; text-align: center; font-weight: bold; font-size: 1.2em; transition: 0.3s; box-shadow: 0 0 10px rgba(0, 195, 255, 0.2); }
+        .btn:hover { background: var(--main-blue); color: white; transform: translateY(-5px); box-shadow: 0 0 25px var(--main-blue); }
 
-  h1 {
-    margin-top: 50px;
-    font-size: 3em;
-    color: #00c3ff;
-    text-shadow: 0 0 10px #00c3ff;
-    text-align: center;
-  }
+        .card { background: var(--card-bg); border-radius: 15px; padding: 25px; margin-top: 30px; border-left: 5px solid var(--main-blue); }
+        .card h2 { color: var(--main-blue); margin-top: 0; }
+        .card p { color: #ccc; line-height: 1.6; }
+        
+        .yt-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .btn-small { background: #1e293b; border: 1px solid var(--main-blue); color: white; padding: 10px 15px; border-radius: 8px; text-decoration: none; font-size: 0.9em; transition: 0.2s; }
+        .btn-small:hover { background: var(--main-blue); }
 
-  .section {
-    width: 90%;
-    max-width: 1000px;
-    margin-top: 50px;
-  }
-
-  .button-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 20px;
-  }
-
-  .btn {
-    background: #1e293b;
-    border: 2px solid #00c3ff;
-    color: #00c3ff;
-    padding: 20px 30px;
-    font-size: 1.1em;
-    border-radius: 12px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 10px rgba(0, 195, 255, 0.3);
-    text-align: center;
-  }
-
-  .btn:hover {
-    background: #00c3ff;
-    color: #0f172a;
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 0 20px rgba(0, 195, 255, 0.6);
-  }
-
-  .btn:active {
-    transform: translateY(0) scale(1);
-    box-shadow: 0 0 10px rgba(0, 195, 255, 0.3);
-  }
-
-  .card {
-    background: #1e293b;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 30px;
-    box-shadow: 0 0 10px rgba(0,195,255,0.3);
-  }
-
-  .card h2 {
-    color: #00c3ff;
-    margin-top: 0;
-  }
-
-  .card p {
-    color: #ccc;
-  }
-
-  footer {
-    margin-top: auto;
-    padding: 20px;
-    font-size: 0.9em;
-    color: #aaa;
-    text-align: center;
-  }
-</style>
+        footer { margin: 50px 0; color: #555; font-size: 0.9em; }
+    </style>
 </head>
 <body>
 
-<h1>BloxdCore Hub</h1>
+    <div class="header">
+        <!-- Logo lu dipasang di sini -->
+        <img src="BloxdCore.png" alt="BloxdCore Logo" class="logo-img">
+    </div>
 
-<!-- Main Navigation Buttons -->
-<div class="section button-container">
-  <a href="docs.html" class="btn">Documentation</a>
-  <a href="commands.html" class="btn">Commands</a>
-  <a href="scripts.html" class="btn">Scripts & Events</a>
-</div>
+    <div class="container">
+        <div class="nav-grid">
+            <a href="docs.html" class="btn">DOCUMENTATION</a>
+            <a href="commands.html" class="btn">COMMAND LIST</a>
+            <a href="scripts.html" class="btn">SCRIPT EXAMPLES</a>
+        </div>
 
-<!-- YouTube Tutorials Section -->
-<div class="section card">
-  <h2>YouTube Tutorials</h2>
-  <p>Tutorial coding BloxdCore langsung dari YouTube untuk belajar step-by-step.</p>
-  <div class="button-container">
-    <a href="https://www.youtube.com/watch?v=kbDNBKi-Ddc" target="_blank" class="btn">Watch Tutorial 1</a>
-    <a href="https://www.youtube.com/@BloxdMayhem" target="_blank" class="btn">Channel BloxdMayhem</a>
-    <a href="https://www.youtube.com/watch?v=QPZZrlj90qE" target="_blank" class="btn">Watch Tutorial 2</a>
-    <a href="https://www.youtube.com/watch?v=wmfGxslv3hU" target="_blank" class="btn">Watch Tutorial 3</a>
-  </div>
-</div>
+        <div class="card">
+            <h2>YouTube Tutorials</h2>
+            <p>Belajar coding BloxdCore step-by-step dari para expert.</p>
+            <div class="yt-grid">
+                <a href="https://www.youtube.com/watch?v=kbDNBKi-Ddc" class="btn-small" target="_blank">Tutorial 1</a>
+                <a href="https://www.youtube.com/@BloxdMayhem" class="btn-small" target="_blank">BloxdMayhem Channel</a>
+                <a href="https://www.youtube.com/watch?v=QPZZrlj90qE" class="btn-small" target="_blank">Tutorial 2</a>
+            </div>
+        </div>
 
-<!-- API & Code Repositories Section -->
-<div class="section card">
-  <h2>API & Code Repositories</h2>
-  <p>Website & Github repository untuk ngecode BloxdCore secara langsung dengan API & library.</p>
-  <div class="button-container">
-    <a href="https://github.com/Bloxdy/code-api" target="_blank" class="btn">Code API</a>
-    <a href="https://github.com/GlitchHunterCoder/Bloxd.io-API-code" target="_blank" class="btn">Bloxd.io API</a>
-  </div>
-</div>
+        <div class="card">
+            <h2>API Repositories</h2>
+            <p>Ambil library dan kode resmi untuk project lu.</p>
+            <div class="yt-grid">
+                <a href="https://github.com/Bloxdy/code-api" class="btn-small" target="_blank">Official Code API</a>
+                <a href="https://github.com/GlitchHunterCoder/Bloxd.io-API-code" class="btn-small" target="_blank">Community Library</a>
+            </div>
+        </div>
+    </div>
 
-<footer>
-  &copy; 2026 BloxdCore • Developed by TIM SUKSES
-</footer>
+    <footer>&copy; 2026 BloxdCore • Developed by TIM SUKSES</footer>
 
 </body>
 </html>
