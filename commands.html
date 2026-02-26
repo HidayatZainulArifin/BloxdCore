@@ -7,52 +7,70 @@
         :root { --main-blue: #00c3ff; --dark-bg: #0a0e1a; --card-bg: #161e2e; --neon-green: #00ffcc; }
         body { background: var(--dark-bg); color: white; font-family: 'Segoe UI', sans-serif; padding: 20px; display: flex; flex-direction: column; align-items: center; }
         .container { width: 95%; max-width: 900px; }
-        h1 { color: var(--main-blue); text-shadow: 0 0 15px var(--main-blue); }
+        h1 { color: var(--main-blue); text-shadow: 0 0 15px var(--main-blue); text-align: center; }
         .back { color: var(--main-blue); text-decoration: none; font-weight: bold; margin-bottom: 20px; display: block; }
-        .category { border-left: 4px solid var(--main-blue); padding-left: 15px; margin-top: 40px; color: var(--main-blue); font-size: 1.5em; }
-        .cmd-btn { width: 100%; text-align: left; background: var(--card-bg); border: 1px solid #333; color: white; padding: 18px; margin: 8px 0; border-radius: 10px; cursor: pointer; font-family: monospace; font-size: 1.1em; transition: 0.2s; }
-        .cmd-btn:hover { border-color: var(--main-blue); box-shadow: 0 0 10px rgba(0, 195, 255, 0.3); }
-        .desc { display: none; background: #000; color: var(--neon-green); padding: 15px; border-radius: 8px; margin-bottom: 10px; font-family: monospace; line-height: 1.5; border: 1px dashed var(--main-blue); }
+        .category { border-left: 4px solid var(--main-blue); padding-left: 15px; margin-top: 40px; color: var(--main-blue); font-size: 1.5em; font-weight: bold; }
+        .cmd-item { background: var(--card-bg); border: 1px solid #333; margin: 10px 0; border-radius: 12px; padding: 15px; display: flex; justify-content: space-between; align-items: center; }
+        .cmd-text { font-family: monospace; font-size: 1.1em; color: var(--neon-green); }
+        .btn-copy { background: var(--main-blue); color: black; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; }
+        .btn-copy:hover { opacity: 0.7; transform: scale(1.05); }
+        .desc { font-size: 0.9em; color: #bbb; margin-top: 5px; }
     </style>
 </head>
 <body>
     <div class="container">
         <a href="index.html" class="back">← BACK TO HUB</a>
         <h1>Chat Commands List</h1>
-        <p>Klik pada perintah untuk melihat detail penggunaan.</p>
 
-        <div class="category">General Commands</div>
-        <button class="cmd-btn" onclick="t('g1')">/spawn</button>
-        <div id="g1" class="desc">Teleportasi instan ke koordinat awal dunia (0,0,0).</div>
+        <div class="category">General</div>
+        <div class="cmd-item">
+            <div>
+                <div class="cmd-text" id="c1">/spawn</div>
+                <div class="desc">Teleportasi ke titik awal dunia.</div>
+            </div>
+            <button class="btn-copy" onclick="cp('c1')">COPY</button>
+        </div>
 
-        <button class="cmd-btn" onclick="t('g2')">/sethome [nama]</button>
-        <div id="g2" class="desc">Menyimpan lokasi kamu saat ini dengan nama tertentu.<br>Contoh: /sethome base_rahasia</div>
-
-        <button class="cmd-btn" onclick="t('g3')">/home [nama]</button>
-        <div id="g3" class="desc">Teleportasi ke lokasi 'home' yang sudah disimpan sebelumnya.</div>
-
-        <button class="cmd-btn" onclick="t('g4')">/rtv</button>
-        <div id="g4" class="desc">Rock The Vote: Digunakan di mode Parkour/BloxdHop untuk vote ganti map.</div>
+        <div class="cmd-item">
+            <div>
+                <div class="cmd-text" id="c2">/sethome [nama]</div>
+                <div class="desc">Simpan lokasi rumah (Contoh: /sethome base).</div>
+            </div>
+            <button class="btn-copy" onclick="cp('c2')">COPY</button>
+        </div>
 
         <div class="category">Owner & Admin</div>
-        <button class="cmd-btn" onclick="t('a1')">/kick [player]</button>
-        <div id="a1" class="desc">Mengeluarkan pemain secara paksa dari World lu.</div>
+        <div class="cmd-item">
+            <div>
+                <div class="cmd-text" id="c3">/kick [player]</div>
+                <div class="desc">Mengeluarkan pemain secara paksa.</div>
+            </div>
+            <button class="btn-copy" onclick="cp('c3')">COPY</button>
+        </div>
 
-        <button class="cmd-btn" onclick="t('a2')">/ban [player]</button>
-        <div id="a2" class="desc">Melarang pemain masuk ke World lu selamanya (Blacklist).</div>
+        <div class="cmd-item">
+            <div>
+                <div class="cmd-text" id="c4">/toggle hardcore</div>
+                <div class="desc">Sekali mati = Auto Ban.</div>
+            </div>
+            <button class="btn-copy" onclick="cp('c4')">COPY</button>
+        </div>
 
-        <button class="cmd-btn" onclick="t('a3')">/toggle hardcore</button>
-        <div id="a3" class="desc">Mengaktifkan mode Hardcore: Jika pemain mati, mereka di-ban otomatis.</div>
-
-        <div class="category">World Builder (Creative)</div>
-        <button class="cmd-btn" onclick="t('b1')">/wand</button>
-        <div id="b1" class="desc">Memberikan item 'WorldBuilder Wand' untuk menandai Pos1 dan Pos2.</div>
-
-        <button class="cmd-btn" onclick="t('b2')">/set [block_name]</button>
-        <div id="b2" class="desc">Mengisi area yang diseleksi wand dengan blok tertentu.<br>Contoh: /set Gold Ore</div>
+        <div class="category">World Builder</div>
+        <div class="cmd-item">
+            <div>
+                <div class="cmd-text" id="c5">/set Gold Ore</div>
+                <div class="desc">Mengisi area terpilih dengan Blok Gold.</div>
+            </div>
+            <button class="btn-copy" onclick="cp('c5')">COPY</button>
+        </div>
     </div>
     <script>
-        function t(id){ var e=document.getElementById(id); e.style.display=(e.style.display==='block')?'none':'block'; }
+        function cp(id) {
+            const t = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(t);
+            alert("Command Copied: " + t);
+        }
     </script>
 </body>
 </html>
