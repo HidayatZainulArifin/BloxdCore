@@ -2,53 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>BloxdCore - Script Examples</title>
+    <title>BloxdCore - Script Library</title>
     <style>
         :root { --main-blue: #00c3ff; --dark-bg: #0a0e1a; --card-bg: #161e2e; --neon-green: #00ffcc; }
-        body { background: var(--dark-bg); color: white; font-family: 'Segoe UI', sans-serif; padding: 20px; }
+        body { background: var(--dark-bg); color: white; font-family: sans-serif; padding: 20px; }
         .container { max-width: 900px; margin: auto; }
-        h1 { color: var(--main-blue); text-align: center; }
+        h1 { color: var(--main-blue); text-align: center; text-shadow: 0 0 10px var(--main-blue); }
         .back { color: var(--main-blue); text-decoration: none; font-weight: bold; }
-        h3 { color: var(--neon-green); margin-top: 30px; border-left: 4px solid var(--main-blue); padding-left: 10px; }
-        code { background: #000; color: var(--neon-green); padding: 20px; border-radius: 10px; display: block; white-space: pre; overflow-x: auto; border: 1px solid #333; }
-        .note { font-size: 0.85em; color: #aaa; margin-top: 5px; }
+        .script-card { background: var(--card-bg); border: 1px solid #333; border-radius: 15px; padding: 20px; margin-bottom: 30px; position: relative; }
+        .script-card h3 { color: var(--neon-green); margin-top: 0; }
+        code { background: #000; color: var(--neon-green); padding: 20px; border-radius: 10px; display: block; white-space: pre; overflow-x: auto; border: 1px solid #444; font-family: 'Consolas', monospace; }
+        .btn-copy-big { position: absolute; top: 20px; right: 20px; background: var(--main-blue); color: black; border: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        .btn-copy-big:hover { background: white; transform: scale(1.05); }
     </style>
 </head>
 <body>
     <div class="container">
         <a href="index.html" class="back">← BACK TO HUB</a>
         <h1>Ready-to-Use Scripts</h1>
-        <p>Salin kode ini ke menu <b>F8 (World Code)</b> atau <b>Code Block</b> lu.</p>
+        <p>Gunakan tombol COPY dan paste ke menu <b>F8 (World Code)</b> lu.</p>
 
-        <h3>1. Auto Welcome & Color Chat</h3>
-        <code>
-onPlayerJoin = (playerId) => {
-    api.sendMessage(playerId, "Selamat Datang di BloxdCore World!", { color: "aqua" });
-}
-        </code>
+        <div class="script-card">
+            <h3>1. Welcome Message System</h3>
+            <button class="btn-copy-big" onclick="cp('s1')">COPY CODE</button>
+            <code id="s1">onPlayerJoin = (playerId) => {
+    api.sendMessage(playerId, "Welcome to our World!", { color: "aqua" });
+    api.playSound(playerId, "levelup", 1, 1);
+};</code>
+        </div>
 
-        <h3>2. Magic Jump Boost (Command !jump)</h3>
-        <code>
-onPlayerChat = (playerId, message) => {
-    if (message === "!jump") {
-        api.setVelocity(playerId, 0, 15, 0);
-        api.sendMessage(playerId, "BOOOM! Tinggi banget!");
+        <div class="script-card">
+            <h3>2. Speed Booster Command</h3>
+            <button class="btn-copy-big" onclick="cp('s2')">COPY CODE</button>
+            <code id="s2">onPlayerChat = (playerId, message) => {
+    if (message === "!speed") {
+        api.setClientOption(playerId, "speedMultiplier", 2.5);
+        api.sendMessage(playerId, "Speed activated!");
     }
-}
-        </code>
+};</code>
+        </div>
 
-        <h3>3. Anti-Void Protection</h3>
-        <code>
-tick = () => {
+        <div class="script-card">
+            <h3>3. Anti-Void (Auto Teleport)</h3>
+            <button class="btn-copy-big" onclick="cp('s3')">COPY CODE</button>
+            <code id="s3">tick = () => {
     for (const id of api.getPlayerIds()) {
         const pos = api.getPosition(id);
         if (pos[1] < -10) { 
-            api.setPosition(id, 0, 5, 0);
-            api.sendMessage(id, "Selamat! Lu hampir jatuh ke void.");
+            api.setPosition(id, 0, 10, 0);
+            api.sendMessage(id, "Anti-Void Teleport!");
         }
     }
-}
-        </code>
+};</code>
+        </div>
     </div>
+    <script>
+        function cp(id) {
+            const t = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(t);
+            alert("Script copied to clipboard! Paste it into F8 menu.");
+        }
+    </script>
 </body>
 </html>
