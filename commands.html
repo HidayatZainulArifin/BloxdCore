@@ -2,44 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>BloxdCore - Commands</title>
+    <title>BloxdCore - Chat Commands</title>
     <style>
-        :root { --main-blue: #00c3ff; --dark-bg: #0a0e1a; --card-bg: #161e2e; }
-        body { background: var(--dark-bg); color: white; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; }
-        .container { width: 90%; max-width: 800px; }
-        h1 { color: var(--main-blue); text-shadow: 0 0 10px var(--main-blue); }
-        .cmd-box { background: var(--card-bg); padding: 20px; border-radius: 12px; border: 1px solid #333; margin-bottom: 40px; }
-        .cmd-btn { width: 100%; text-align: left; background: #1e293b; border: 1px solid var(--main-blue); color: white; padding: 15px; margin: 8px 0; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; }
-        .cmd-btn:hover { background: var(--main-blue); color: black; box-shadow: 0 0 15px var(--main-blue); }
-        .desc { display: none; background: #000; color: #00ffcc; padding: 15px; border-radius: 8px; margin-bottom: 10px; font-family: monospace; border-left: 3px solid var(--main-blue); }
-        .back-link { color: var(--main-blue); text-decoration: none; font-weight: bold; margin-bottom: 20px; display: block; }
+        :root { --main-blue: #00c3ff; --dark-bg: #0a0e1a; --card-bg: #161e2e; --neon-green: #00ffcc; }
+        body { background: var(--dark-bg); color: white; font-family: 'Segoe UI', sans-serif; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        .container { width: 95%; max-width: 900px; }
+        h1 { color: var(--main-blue); text-shadow: 0 0 15px var(--main-blue); }
+        .back { color: var(--main-blue); text-decoration: none; font-weight: bold; margin-bottom: 20px; display: block; }
+        .category { border-left: 4px solid var(--main-blue); padding-left: 15px; margin-top: 40px; color: var(--main-blue); font-size: 1.5em; }
+        .cmd-btn { width: 100%; text-align: left; background: var(--card-bg); border: 1px solid #333; color: white; padding: 18px; margin: 8px 0; border-radius: 10px; cursor: pointer; font-family: monospace; font-size: 1.1em; transition: 0.2s; }
+        .cmd-btn:hover { border-color: var(--main-blue); box-shadow: 0 0 10px rgba(0, 195, 255, 0.3); }
+        .desc { display: none; background: #000; color: var(--neon-green); padding: 15px; border-radius: 8px; margin-bottom: 10px; font-family: monospace; line-height: 1.5; border: 1px dashed var(--main-blue); }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="index.html" class="back-link">← BACK TO HOME</a>
-        <h1>Commands List</h1>
-        <div class="cmd-box">
-            <p>Klik perintah untuk melihat fungsi & cara pakai:</p>
-            
-            <button class="cmd-btn" onclick="toggle('c1')">/spawn</button>
-            <div id="c1" class="desc">Fungsi: Teleportasi ke titik awal dunia.<br>Usage: Ketik di chat.</div>
+        <a href="index.html" class="back">← BACK TO HUB</a>
+        <h1>Chat Commands List</h1>
+        <p>Klik pada perintah untuk melihat detail penggunaan.</p>
 
-            <button class="cmd-btn" onclick="toggle('c2')">/sethome [nama]</button>
-            <div id="c2" class="desc">Fungsi: Menyimpan lokasi rumah.<br>Usage: /sethome base1</div>
+        <div class="category">General Commands</div>
+        <button class="cmd-btn" onclick="t('g1')">/spawn</button>
+        <div id="g1" class="desc">Teleportasi instan ke koordinat awal dunia (0,0,0).</div>
 
-            <button class="cmd-btn" onclick="toggle('c3')">onPlayerJoin(player)</button>
-            <div id="c3" class="desc">Event: Berjalan saat pemain masuk.<br>Script: api.onPlayerJoin((p) => { ... })</div>
+        <button class="cmd-btn" onclick="t('g2')">/sethome [nama]</button>
+        <div id="g2" class="desc">Menyimpan lokasi kamu saat ini dengan nama tertentu.<br>Contoh: /sethome base_rahasia</div>
 
-            <button class="cmd-btn" onclick="toggle('c4')">onBlockBreak(player, block)</button>
-            <div id="c4" class="desc">Event: Berjalan saat blok dihancurkan.<br>Script: Detect block name & position.</div>
-        </div>
+        <button class="cmd-btn" onclick="t('g3')">/home [nama]</button>
+        <div id="g3" class="desc">Teleportasi ke lokasi 'home' yang sudah disimpan sebelumnya.</div>
+
+        <button class="cmd-btn" onclick="t('g4')">/rtv</button>
+        <div id="g4" class="desc">Rock The Vote: Digunakan di mode Parkour/BloxdHop untuk vote ganti map.</div>
+
+        <div class="category">Owner & Admin</div>
+        <button class="cmd-btn" onclick="t('a1')">/kick [player]</button>
+        <div id="a1" class="desc">Mengeluarkan pemain secara paksa dari World lu.</div>
+
+        <button class="cmd-btn" onclick="t('a2')">/ban [player]</button>
+        <div id="a2" class="desc">Melarang pemain masuk ke World lu selamanya (Blacklist).</div>
+
+        <button class="cmd-btn" onclick="t('a3')">/toggle hardcore</button>
+        <div id="a3" class="desc">Mengaktifkan mode Hardcore: Jika pemain mati, mereka di-ban otomatis.</div>
+
+        <div class="category">World Builder (Creative)</div>
+        <button class="cmd-btn" onclick="t('b1')">/wand</button>
+        <div id="b1" class="desc">Memberikan item 'WorldBuilder Wand' untuk menandai Pos1 dan Pos2.</div>
+
+        <button class="cmd-btn" onclick="t('b2')">/set [block_name]</button>
+        <div id="b2" class="desc">Mengisi area yang diseleksi wand dengan blok tertentu.<br>Contoh: /set Gold Ore</div>
     </div>
     <script>
-        function toggle(id) {
-            var x = document.getElementById(id);
-            x.style.display = (x.style.display === "block") ? "none" : "block";
-        }
+        function t(id){ var e=document.getElementById(id); e.style.display=(e.style.display==='block')?'none':'block'; }
     </script>
 </body>
 </html>
