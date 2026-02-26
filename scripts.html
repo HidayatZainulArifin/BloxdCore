@@ -2,35 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>BloxdCore - Scripts</title>
+    <title>BloxdCore - Script Examples</title>
     <style>
-        :root { --main-blue: #00c3ff; --dark-bg: #0a0e1a; --card-bg: #161e2e; }
-        body { background: var(--dark-bg); color: white; font-family: sans-serif; padding: 20px; }
+        :root { --main-blue: #00c3ff; --dark-bg: #0a0e1a; --card-bg: #161e2e; --neon-green: #00ffcc; }
+        body { background: var(--dark-bg); color: white; font-family: 'Segoe UI', sans-serif; padding: 20px; }
         .container { max-width: 900px; margin: auto; }
-        h1 { color: var(--main-blue); }
-        code { background: #000; color: #00ffcc; padding: 20px; border-radius: 10px; display: block; white-space: pre; border-left: 5px solid var(--main-blue); }
-        .back-link { color: var(--main-blue); text-decoration: none; font-weight: bold; }
+        h1 { color: var(--main-blue); text-align: center; }
+        .back { color: var(--main-blue); text-decoration: none; font-weight: bold; }
+        h3 { color: var(--neon-green); margin-top: 30px; border-left: 4px solid var(--main-blue); padding-left: 10px; }
+        code { background: #000; color: var(--neon-green); padding: 20px; border-radius: 10px; display: block; white-space: pre; overflow-x: auto; border: 1px solid #333; }
+        .note { font-size: 0.85em; color: #aaa; margin-top: 5px; }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="index.html" class="back-link">← BACK TO HOME</a>
-        <h1>Example Scripts</h1>
-        
-        <h3>1. Welcome Message</h3>
+        <a href="index.html" class="back">← BACK TO HUB</a>
+        <h1>Ready-to-Use Scripts</h1>
+        <p>Salin kode ini ke menu <b>F8 (World Code)</b> atau <b>Code Block</b> lu.</p>
+
+        <h3>1. Auto Welcome & Color Chat</h3>
         <code>
-api.onPlayerJoin((player) => {
-    api.sendMessage(player, "Welcome to BloxdCore World!");
-});
+onPlayerJoin = (playerId) => {
+    api.sendMessage(playerId, "Selamat Datang di BloxdCore World!", { color: "aqua" });
+}
         </code>
 
-        <h3>2. Simple Speed Boost</h3>
+        <h3>2. Magic Jump Boost (Command !jump)</h3>
         <code>
-api.onPlayerChat((player, msg) => {
-    if(msg === "!speed") {
-        api.setPlayerSpeed(player, 2.0);
+onPlayerChat = (playerId, message) => {
+    if (message === "!jump") {
+        api.setVelocity(playerId, 0, 15, 0);
+        api.sendMessage(playerId, "BOOOM! Tinggi banget!");
     }
-});
+}
+        </code>
+
+        <h3>3. Anti-Void Protection</h3>
+        <code>
+tick = () => {
+    for (const id of api.getPlayerIds()) {
+        const pos = api.getPosition(id);
+        if (pos[1] < -10) { 
+            api.setPosition(id, 0, 5, 0);
+            api.sendMessage(id, "Selamat! Lu hampir jatuh ke void.");
+        }
+    }
+}
         </code>
     </div>
 </body>
