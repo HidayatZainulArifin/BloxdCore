@@ -1,140 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Bloxd.io Commands - BloxdCore</title>
-<link rel="icon" type="image/png" href="BloxdCore.png">
-<style>
-body {
-    font-family: Arial, sans-serif;
-    background: #0f172a;
-    color: white;
-    margin: 0;
-    padding: 20px;
-}
-h1, h2 {
-    text-align: center;
-    color: #00c3ff;
-}
-.card {
-    background: #1e293b;
-    padding: 20px;
-    margin: 20px auto;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0,195,255,0.4);
-    max-width: 1200px;
-}
-button.command-btn {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    font-size: 16px;
-    background: #00c3ff;
-    color: #0f172a;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-button.command-btn:hover {
-    background: #0095cc;
-    transform: scale(1.03);
-}
-.command-desc {
-    background: #0f172a;
-    color: #00ffcc;
-    padding: 10px;
-    margin: 5px 0 15px 0;
-    border-radius: 6px;
-    white-space: pre-wrap;
-}
-a.back-btn {
-    display: inline-block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background: #00c3ff;
-    color: #0f172a;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: all 0.2s;
-}
-a.back-btn:hover {
-    background: #0095cc;
-}
-</style>
+    <meta charset="UTF-8">
+    <title>BloxdCore - Commands</title>
+    <style>
+        :root { --main-blue: #00c3ff; --dark-bg: #0a0e1a; --card-bg: #161e2e; }
+        body { background: var(--dark-bg); color: white; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .container { width: 90%; max-width: 800px; }
+        h1 { color: var(--main-blue); text-shadow: 0 0 10px var(--main-blue); }
+        .cmd-box { background: var(--card-bg); padding: 20px; border-radius: 12px; border: 1px solid #333; margin-bottom: 40px; }
+        .cmd-btn { width: 100%; text-align: left; background: #1e293b; border: 1px solid var(--main-blue); color: white; padding: 15px; margin: 8px 0; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; }
+        .cmd-btn:hover { background: var(--main-blue); color: black; box-shadow: 0 0 15px var(--main-blue); }
+        .desc { display: none; background: #000; color: #00ffcc; padding: 15px; border-radius: 8px; margin-bottom: 10px; font-family: monospace; border-left: 3px solid var(--main-blue); }
+        .back-link { color: var(--main-blue); text-decoration: none; font-weight: bold; margin-bottom: 20px; display: block; }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <a href="index.html" class="back-link">← BACK TO HOME</a>
+        <h1>Commands List</h1>
+        <div class="cmd-box">
+            <p>Klik perintah untuk melihat fungsi & cara pakai:</p>
+            
+            <button class="cmd-btn" onclick="toggle('c1')">/spawn</button>
+            <div id="c1" class="desc">Fungsi: Teleportasi ke titik awal dunia.<br>Usage: Ketik di chat.</div>
 
-<h1>Bloxd.io Commands</h1>
+            <button class="cmd-btn" onclick="toggle('c2')">/sethome [nama]</button>
+            <div id="c2" class="desc">Fungsi: Menyimpan lokasi rumah.<br>Usage: /sethome base1</div>
 
-<div class="card">
-<h2>Daftar Commands & Deskripsi</h2>
+            <button class="cmd-btn" onclick="toggle('c3')">onPlayerJoin(player)</button>
+            <div id="c3" class="desc">Event: Berjalan saat pemain masuk.<br>Script: api.onPlayerJoin((p) => { ... })</div>
 
-<!-- Example Command Button -->
-<button class="command-btn" onclick="showDesc('onPlayerJoin')">onPlayerJoin(player)</button>
-<div id="onPlayerJoin" class="command-desc" style="display:none;">
-Trigger saat pemain join ke server.
-Usage: onPlayerJoin(player)
-</div>
-
-<button class="command-btn" onclick="showDesc('onPlayerLeave')">onPlayerLeave(player)</button>
-<div id="onPlayerLeave" class="command-desc" style="display:none;">
-Trigger saat pemain keluar dari server.
-Usage: onPlayerLeave(player)
-</div>
-
-<button class="command-btn" onclick="showDesc('onPlayerChat')">onPlayerChat(player, message)</button>
-<div id="onPlayerChat" class="command-desc" style="display:none;">
-Trigger saat pemain mengirim chat.
-Usage: onPlayerChat(player, message)
-</div>
-
-<button class="command-btn" onclick="showDesc('onPlayerMove')">onPlayerMove(player, fromPos, toPos)</button>
-<div id="onPlayerMove" class="command-desc" style="display:none;">
-Trigger saat pemain bergerak.
-Usage: onPlayerMove(player, fromPos, toPos)
-</div>
-
-<button class="command-btn" onclick="showDesc('onBlockPlace')">onBlockPlace(player, block)</button>
-<div id="onBlockPlace" class="command-desc" style="display:none;">
-Trigger saat block ditempatkan.
-Usage: onBlockPlace(player, block)
-</div>
-
-<button class="command-btn" onclick="showDesc('onBlockBreak')">onBlockBreak(player, block)</button>
-<div id="onBlockBreak" class="command-desc" style="display:none;">
-Trigger saat block dihancurkan.
-Usage: onBlockBreak(player, block)
-</div>
-
-<button class="command-btn" onclick="showDesc('onItemUse')">onItemUse(player, item)</button>
-<div id="onItemUse" class="command-desc" style="display:none;">
-Trigger saat pemain menggunakan item.
-Usage: onItemUse(player, item)
-</div>
-
-<button class="command-btn" onclick="showDesc('triggerCustomEvent')">triggerCustomEvent(name, data)</button>
-<div id="triggerCustomEvent" class="command-desc" style="display:none;">
-Memicu custom event sendiri.
-Usage: triggerCustomEvent(name, data)
-</div>
-
-<!-- Tambah semua commands yang valid dari wiki dan API di sini -->
-<!-- Pastikan tiap command punya tombol & div deskripsi -->
-
-</div>
-
-<div style="text-align:center;">
-<a class="back-btn" href="index.html">⬅ Back to Home</a>
-</div>
-
-<script>
-function showDesc(id) {
-    var elem = document.getElementById(id);
-    elem.style.display = elem.style.display === 'none' ? 'block' : 'none';
-}
-</script>
-
+            <button class="cmd-btn" onclick="toggle('c4')">onBlockBreak(player, block)</button>
+            <div id="c4" class="desc">Event: Berjalan saat blok dihancurkan.<br>Script: Detect block name & position.</div>
+        </div>
+    </div>
+    <script>
+        function toggle(id) {
+            var x = document.getElementById(id);
+            x.style.display = (x.style.display === "block") ? "none" : "block";
+        }
+    </script>
 </body>
 </html>
